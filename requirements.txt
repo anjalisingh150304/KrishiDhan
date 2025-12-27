@@ -1,0 +1,14 @@
+flask
+opencv-python
+numpy
+pandas
+numpy
+scikit-learn
+joblib
+matplotlib
+seaborn
+yellowbrick
+opencv-python
+pyserial
+tenserflow
+deep-translator
