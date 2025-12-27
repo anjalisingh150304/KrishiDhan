@@ -1,0 +1,179 @@
+/* =========================================================
+   FULL CHECK PAGE – STYLES
+   ========================================================= */
+
+/* Page container */
+.full-check-page {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Header */
+.full-check-page .page-header {
+    margin-bottom: 35px;
+}
+
+.full-check-page .page-header h2 {
+    font-family: var(--heading-font);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.full-check-page .page-header p {
+    opacity: 0.8;
+    max-width: 720px;
+}
+
+/* =========================================================
+   START BUTTON
+   ========================================================= */
+#startFullCheckBtn {
+    padding: 18px 46px;
+    font-size: 1.15rem;
+    font-family: var(--heading-font);
+    letter-spacing: 1.5px;
+    border-radius: 50px;
+    background: linear-gradient(
+        135deg,
+        var(--accent),
+        #6b4f2a
+    );
+    border: none;
+    color: #1b1207;
+    cursor: pointer;
+    box-shadow: 0 12px 35px rgba(107, 79, 42, 0.6);
+    transition: all 0.35s ease;
+    margin-top: 16px;
+}
+
+#startFullCheckBtn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 22px 55px rgba(107, 79, 42, 0.85);
+}
+
+#startFullCheckBtn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   PROGRESS / LOADER
+   ========================================================= */
+#fullLoader {
+    margin: 45px 0;
+    text-align: center;
+}
+
+#fullLoader span {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255, 255, 255, 0.12);
+    border-top: 4px solid var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    margin-bottom: 12px;
+}
+
+#fullLoader p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* =========================================================
+   RESULTS SECTION
+   ========================================================= */
+#fullResult {
+    margin-top: 45px;
+}
+
+/* =========================================================
+   CROPS TABLE (COMPACT)
+   ========================================================= */
+#fullResult .crop-table {
+    margin-top: 15px;
+}
+
+#fullResult .crop-table th {
+    text-align: left;
+    padding: 14px 18px;
+    font-family: var(--heading-font);
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+#fullResult .crop-table td {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+}
+
+/* Highlight rows */
+#fullResult .crop-table tbody tr {
+    transition: background 0.3s ease;
+}
+
+#fullResult .crop-table tbody tr:hover {
+    background: rgba(107, 79, 42, 0.15);
+}
+
+/* =========================================================
+   DISEASE STATUS PANEL
+   ========================================================= */
+#fullResult .crop-details {
+    margin-top: 35px;
+    padding: 26px 28px;
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+#fullResult .crop-details h3 {
+    font-family: var(--heading-font);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+#diseaseStatus {
+    font-size: 1.05rem;
+    letter-spacing: 0.4px;
+}
+
+/* Status color hints */
+#diseaseStatus.healthy {
+    color: #7cff6b;
+}
+
+#diseaseStatus.warning {
+    color: #ffb347;
+}
+
+#diseaseStatus.danger {
+    color: #ff5c5c;
+}
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+.hidden {
+    display: none;
+}
+
+.crop-table tbody tr {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.crop-table tbody tr:hover {
+    background: rgba(124, 255, 107, 0.15);
+}
+
+
+.lang-select {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 6px 10px;
+}

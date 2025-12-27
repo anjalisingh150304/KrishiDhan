@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITTIE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script defer src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script src="https://kit.fontawesome.com/f077b295a0.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="dark">
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span class="logo-text">MITTIE</span>
+            </div>
+
+            <nav class="menu">
+                <a href="/" class="menu-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/recommend/crop" class="menu-item active">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span>Crop Recommendation</span>
+                </a>
+                <a href="/detect/disease" class="menu-item">
+                    <i class="fa-solid fa-bug-slash"></i>
+                    <span>Disease Detection</span>
+                </a>
+                <a href="/full/check" class="menu-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Full Check</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-btn" onclick="toggleSidebar()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="topbar-center">
+                    <h1>MITTIE</h1>
+                    <span>A Multi-parameter IoT-enabled Threshold & Transparent Insight Engine for Real-time Crop
+                        Prediction and Explainable Nutrient Recommendation</span>
+                </div>
+
+                <div class="topbar-right">
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <button class="icon-btn theme-toggle" onclick="toggleTheme()">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <section class="content">
+                <div class="dashboard-grid">
+
+                    <a class="glass-card" href="/">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h3>Dashboard</h3>
+                        <p>Overview & insights</p>
+                    </a>
+
+                    <a class="glass-card" href="/recommend/crop">
+                        <i class="fa-solid fa-leaf"></i>
+                        <h3>Crop Recommendation</h3>
+                        <p>Soil & crop intelligence</p>
+                    </a>
+
+                    <a class="glass-card" href="/detect/disease">
+                        <i class="fa-solid fa-bug-slash"></i>
+                        <h3>Disease Detection</h3>
+                        <p>Early crop threat analysis</p>
+                    </a>
+
+                    <a class="glass-card" href="/full/check">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h3>Full Check</h3>
+                        <p>Complete farm diagnostics</p>
+                    </a>
+
+                </div>
+
+                <!-- GETTING STARTED SECTION -->
+                <div class="getting-started glass-panel">
+
+                    <h2>Getting Started with MITTIE</h2>
+
+                    <div class="gs-section">
+                        <h3>1️⃣ Hardware Setup</h3>
+                        <ul>
+                            <li>Ensure the <strong>NPK Sensor</strong> is properly inserted into the soil sample.
+                            </li>
+                            <li>Verify the <strong>Webcam</strong> is connected and positioned towards the plant
+                                leaf.</li>
+                        </ul>
+                    </div>
+
+                    <div class="gs-section">
+                        <h3>2️⃣ Select a Diagnostic Mode</h3>
+
+                        <div class="mode-list">
+                            <div class="mode-item">
+                                <span>🌱</span>
+                                <p>
+                                    <strong>Crop Recommendation</strong><br>
+                                    Analyze real-time soil nutrients (N, P, K) and get AI-driven crop suggestions.
+                                </p>
+                            </div>
+
+                            <div class="mode-item">
+                                <span>🍂</span>
+                                <p>
+                                    <strong>Disease Detection</strong><br>
+                                    Launches the camera feed. Hold the leaf steady in the center for 3–5 seconds.
+                                </p>
+                            </div>
+
+                            <div class="mode-item">
+                                <span>🔍</span>
+                                <p>
+                                    <strong>Full Check</strong><br>
+                                    Runs a comprehensive diagnostic of both soil and plant health.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gs-note">
+                        <strong>Note:</strong> For best results, ensure the leaf is well-lit and stable.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

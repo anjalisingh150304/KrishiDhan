@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MITTIE – Full Farm Check</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='full_check.css') }}">
+
+    <!-- JS -->
+    <script defer src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/full_check.js') }}"></script>
+</head>
+
+<body class="dark">
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span class="logo-text">MITTIE</span>
+            </div>
+
+            <nav class="menu">
+                <a href="/" class="menu-item">
+                    <i class="fa-solid fa-chart-line"></i><span>Dashboard</span>
+                </a>
+                <a href="/recommend/crop" class="menu-item">
+                    <i class="fa-solid fa-leaf"></i><span>Crop Recommendation</span>
+                </a>
+                <a href="/detect/disease" class="menu-item">
+                    <i class="fa-solid fa-bug-slash"></i><span>Disease Detection</span>
+                </a>
+                <a href="/full/check" class="menu-item active">
+                    <i class="fa-solid fa-circle-check"></i><span>Full Check</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-btn" onclick="toggleSidebar()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="topbar-center">
+                    <h1>MITTIE</h1>
+                    <span>Complete Soil + Crop + Disease Analysis</span>
+                </div>
+
+                <div class="topbar-right">
+                    <button class="icon-btn theme-toggle" onclick="toggleTheme()">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+
+                    <select id="languageSelect" class="lang-select" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="ta">தமிழ்</option>
+                        <option value="te">తెలుగు</option>
+                    </select>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <section class="content">
+
+                <div class="crop-page">
+
+                    <div class="page-header">
+                        <h2>Full Health Check</h2>
+                        <p>
+                            Performs soil analysis, crop recommendation,
+                            and live disease detection in one flow.
+                        </p>
+                    </div>
+
+                    <!-- ACTION -->
+                    <div class="action-area">
+                        <button id="startFullCheckBtn" onclick="startFullCheck()">
+                            Start Full Check
+                        </button>
+
+                        <button id="switchCamBtn" onclick="switchCamera()" style="display:none;">
+                            <i class="fa-solid fa-rotate"></i> Switch Camera
+                        </button>
+                    </div>
+
+
+                    <!-- PROGRESS -->
+                    <div id="fullLoader" class="loader hidden">
+                        <span></span>
+                        <p id="loaderText">Initializing analysis…</p>
+                    </div>
+
+                    <!-- RESULTS -->
+                    <div id="fullResult" class="result-area hidden">
+
+                        <h3>Recommended Crops</h3>
+                        <table class="crop-table">
+                            <thead>
+                                <tr>
+                                    <th>Crop</th>
+                                    <th>Suitability</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fullCropTable"></tbody>
+                        </table>
+
+                        <h3>Recommended Crops</h3>
+                        <table class="crop-table">
+                            <thead>
+                                <tr>
+                                    <th>Crop</th>
+                                    <th>Suitability</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fullCropTable"></tbody>
+                        </table>
+
+                        <div id="fullCropDetails" class="crop-details hidden">
+                            <h3 id="fullDetailTitle">Crop Details</h3>
+                            <ul id="fullDetailList"></ul>
+                        </div>
+
+
+                        <div class="crop-details" style="margin-top:30px;">
+                            <h3>Disease Status</h3>
+                            <p id="diseaseStatus">Awaiting camera analysis…</p>
+
+                            <div class="crop-details" style="margin-top:25px;">
+                                <h3>Live Leaf Scan</h3>
+
+                                <video id="video" autoplay playsinline muted
+                                    style="width:100%; border-radius:16px;"></video>
+
+                                <canvas id="canvas" class="hidden"></canvas>
+
+                                <p id="cameraStatus" style="margin-top:10px; opacity:0.8;">
+                                    Camera initializing…
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>

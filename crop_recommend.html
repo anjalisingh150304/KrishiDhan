@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mittie Crop Recommendation</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='recommend.css') }}">
+
+    <script defer src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</head>
+
+<body class="dark">
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span class="logo-text">MITIE</span>
+            </div>
+
+            <nav class="menu">
+                <a href="/" class="menu-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/recommend/crop" class="menu-item active">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span>Crop Recommendation</span>
+                </a>
+                <a href="/detect/disease" class="menu-item">
+                    <i class="fa-solid fa-bug-slash"></i>
+                    <span>Disease Detection</span>
+                </a>
+                <a href="/full/check" class="menu-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Full Check</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-btn" onclick="toggleSidebar()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="topbar-center">
+                    <h1>MITTIE</h1>
+                    <span>A Multi-parameter IoT-enabled Threshold & Transparent Insight Engine for Real-time Crop
+                        Prediction and Explainable Nutrient Recommendation</span>
+                </div>
+
+                <div class="topbar-right">
+                    <button class="icon-btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <button class="icon-btn theme-toggle" onclick="toggleTheme()">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+
+                    <select id="languageSelect" class="lang-select" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="ta">தமிழ்</option>
+                        <option value="te">తెలుగు</option>
+                    </select>
+
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <section class="content">
+
+                <div class="crop-page">
+
+                    <div class="page-header">
+                        <h2>🌾 Crop Recommendation</h2>
+                        <p>
+                            Analyze soil conditions using Raspberry Pi intelligence
+                            and determine suitable crops.
+                        </p>
+                    </div>
+
+                    <div class="action-area">
+                        <button id="checkSoilBtn" onclick="checkSoil()">
+                            🌱 Check Soil
+                        </button>
+                    </div>
+
+                    <div id="loader" class="loader hidden">
+                        <span></span>
+                        <p>Analyzing soil data…</p>
+                    </div>
+
+                    <div id="resultArea" class="result-area hidden">
+
+                        <div id="soilSummary" class="soil-summary glass-panel">
+
+                            <h3>🧪 Soil Analysis</h3>
+
+                            <div class="soil-grid">
+                                <div class="soil-item">
+                                    <span>N</span>
+                                    <strong id="soilN">--</strong>
+                                    <small>Nitrogen (mg/kg)</small>
+                                </div>
+
+                                <div class="soil-item">
+                                    <span>P</span>
+                                    <strong id="soilP">--</strong>
+                                    <small>Phosphorus (mg/kg)</small>
+                                </div>
+
+                                <div class="soil-item">
+                                    <span>K</span>
+                                    <strong id="soilK">--</strong>
+                                    <small>Potassium (mg/kg)</small>
+                                </div>
+
+                                <div class="soil-item">
+                                    <span>pH</span>
+                                    <strong id="soilPH">--</strong>
+                                    <small>Soil Acidity</small>
+                                </div>
+
+                                <div class="soil-item">
+                                    <span>🌡</span>
+                                    <strong id="soilTemp">--</strong>
+                                    <small>Temperature (°C)</small>
+                                </div>
+
+                                <div class="soil-item">
+                                    <span>💧</span>
+                                    <strong id="soilMoisture">--</strong>
+                                    <small>Moisture (%)</small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h3>Recommended Crops</h3>
+
+                        <table class="crop-table">
+                            <thead>
+                                <tr>
+                                    <th>Crop</th>
+                                    <th>Soil Type</th>
+                                    <th>Season</th>
+                                    <th>Suitability</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cropTableBody"></tbody>
+                        </table>
+
+                        <div id="cropDetails" class="crop-details hidden">
+                            <h3 id="detailTitle">Crop Details</h3>
+                            <ul id="detailList"></ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

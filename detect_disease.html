@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MITTIE – Disease Detection</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='disease.css') }}">
+</head>
+
+<body class="dark">
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-seedling"></i>
+            <span class="logo-text">MITTIE</span>
+        </div>
+
+        <nav class="menu">
+            <a href="/" class="menu-item">
+                <i class="fa-solid fa-chart-line"></i><span>Dashboard</span>
+            </a>
+            <a href="/recommend/crop" class="menu-item">
+                <i class="fa-solid fa-leaf"></i><span>Crop Recommendation</span>
+            </a>
+            <a href="/detect/disease" class="menu-item active">
+                <i class="fa-solid fa-virus"></i><span>Disease Detection</span>
+            </a>
+            <a href="/full/check" class="menu-item">
+                <i class="fa-solid fa-circle-check"></i><span>Full Check</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <button class="menu-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="topbar-center">
+                <h1>MITTIE</h1>
+                <span>AI-powered Plant Disease Detection</span>
+            </div>
+
+            <button class="icon-btn theme-toggle" onclick="toggleTheme()">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+        </header>
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <div class="disease-page">
+
+                <div class="page-header">
+                    <h2>🌿 Plant Disease Detection</h2>
+                    <p>
+                        Start the camera and keep the leaf steady in the center
+                        for accurate AI diagnosis.
+                    </p>
+                </div>
+
+                <!-- CONTROLS -->
+                <div class="action-area">
+                    <button id="startCamBtn" onclick="startCamera()">
+                        <i class="fa-solid fa-camera"></i> Start Camera
+                    </button>
+
+                    <button id="switchCamBtn" onclick="switchCamera()">
+                        <i class="fa-solid fa-rotate"></i> Switch Camera
+                    </button>
+
+                    <button id="stopCamBtn" onclick="stopCamera()" disabled>
+                        Stop Camera
+                    </button>
+                </div>
+
+                <!-- CAMERA -->
+                <div class="camera-box">
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas" hidden></canvas>
+                </div>
+
+                <!-- RESULT -->
+                <div id="diseaseResult" class="result-box hidden">
+                    <h3>Status</h3>
+                    <span id="resultText">Analyzing…</span>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</div>
+
+<!-- JS -->
+<script defer src="{{ url_for('static', filename='js/disease.js') }}"></script>
+
+</body>
+</html>
